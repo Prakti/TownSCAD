@@ -30,3 +30,7 @@ Import the STL, scale it down, put a deformation lattice over it, cut the Mesh
 as needed and use the lattice to deform it to your liking. This should bring a
 bit of irregularity and thus life to the model.
 
+Here's a Cycles rendered example. It's not too distorted but also not too
+boring:
+
+![Blender Example](/town-02.png)
