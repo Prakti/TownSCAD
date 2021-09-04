@@ -408,74 +408,84 @@ module floor1(start, end, zlevel, overlap=0, ridge=[false, false, false, false])
 // Test Driving this Shit!
 //##################################
 
-floor1([-1, -1], [3, 2], 0);
+floor1([-1, -2], [3, 2], 0);
 
+// Ground Floor
 wall_w([0,0,0], features=["window1"], wall_color="PaleGreen");
-wall_s([0,0,0], features=["door1"], wall_color="PaleGreen");
-wall_s([1,0,0], features=["window1"], wall_color="PaleGreen");
-wall_s([2,0,0], features=["door1"], wall_color="PaleGreen");
-wall_s([3,0,0], features=["door1"], wall_color="PaleGreen");
+wall_s([0,0,0], features=["window1"], wall_color="PaleGreen");
+wall_s([1,-1,0], features=["door1"], wall_color="PaleGreen");
+wall_w([1,-1,0], features=["window1"], wall_color="PaleGreen");
+wall_e([1,-1,0], features=["window1"], wall_color="PaleGreen");
+wall_s([2,0,0], features=["window1"], wall_color="PaleGreen");
+wall_s([3,0,0], features=["window1"], wall_color="PaleGreen");
 wall_n([0,0,0], features=["window2"], wall_color="PaleGreen");
 wall_n([1,0,0], features=["window1"], wall_color="PaleGreen");
-wall_n([2,0,0], features=["door1"], wall_color="PaleGreen");
+wall_n([2,1,0], features=["window1"], wall_color="PaleGreen");
+wall_w([2,1,0], features=["door1"], wall_color="PaleGreen");
+wall_e([2,1,0], features=["door1"], wall_color="PaleGreen");
 wall_n([3,0,0], features=["window1"], wall_color="PaleGreen");
 wall_e([3,0,0], features=["window1"], wall_color="PaleGreen");
 
+// Second Floor
 wall_w([0,0,1], features=["window1"], wall_color="PaleGreen");
 wall_s([0,0,1], features=["window1"], wall_color="PaleGreen");
-wall_s([1,0,1], features=["window1"], wall_color="PaleGreen");
+wall_s([1,-1,1], features=["window1"], wall_color="PaleGreen");
+wall_w([1,-1,1], features=["window1"], wall_color="PaleGreen");
+wall_e([1,-1,1], features=["window1"], wall_color="PaleGreen");
 wall_s([2,0,1], features=["window1"], wall_color="PaleGreen");
 wall_s([3,0,1], features=["window1"], wall_color="PaleGreen");
-wall_n([0,0,1], features=["window1"], wall_color="PaleGreen");
+wall_n([0,0,1], features=["window2"], wall_color="PaleGreen");
 wall_n([1,0,1], features=["window1"], wall_color="PaleGreen");
-wall_n([2,0,1], features=["window1"], wall_color="PaleGreen");
+wall_n([2,1,1], features=["window1"], wall_color="PaleGreen");
+wall_w([2,1,1], features=["window1"], wall_color="PaleGreen");
+wall_e([2,1,1], features=["window1"], wall_color="PaleGreen");
 wall_n([3,0,1], features=["window1"], wall_color="PaleGreen");
 wall_e([3,0,1], features=["window1"], wall_color="PaleGreen");
 
-//floor1([0, 0], [3, 0], 2, overlap=3, ridge=[true, true, true, true]);
+// Roof 
 saddle_roof([0, 0], [3, 0], 2, "we");
-saddle_roof_join([4,0],[4,0], 2, "we", "w");
-saddle_roof_join([4,0],[4,0], 2, "we", "e");
-saddle_roof_join([4,0],[4,0], 2, "ns", "s");
-saddle_roof_join([4,0],[4,0], 2, "ns", "n");
+saddle_roof_end([0,0,2], 1, "we", "w", wall_color="PaleGreen");
+saddle_roof_end([3,0,2], 1, "we", "e", wall_color="PaleGreen");
 
-saddle_roof([5, 0], [5, 0], 2, "we");
-saddle_roof([4, -1], [4, -1], 2, "ns");
-saddle_roof([4, 1], [4, 1], 2, "ns");
+// Southern Extension
+saddle_roof_join([1, 0], [1, 0], 2, "ns", "s");
+saddle_roof([1, -1], [1, -1], 2, "ns");
+saddle_roof_end([1,-1,2], 1, "ns", "s", wall_color="PaleGreen"); 
 
-saddle_roof_end([0,0,2], 1, "we", "w");
-saddle_roof_end([5,0,2], 1, "we", "e"); 
+// Northern Extension
+saddle_roof_join([2, 0], [2, 0], 2, "ns", "n");
+saddle_roof([2, 1], [2, 1], 2, "ns");
+saddle_roof_end([2,1,2], 1, "ns", "n", wall_color="PaleGreen"); 
 
-saddle_roof_end([0,0,2], 1, "we", "w");
-saddle_roof_end([4,-1,2], 1, "ns", "s"); 
-saddle_roof_end([4,1,2], 1, "ns", "n"); 
 
+
+// Tower comes here
 floor1([4, -1], [6, 1], 0);
 
 
-//wall_s([5,0,0], features=["door1"], wall_color="MediumTurquoise");
-//wall_n([5,0,0], features=["window1"], wall_color="MediumTurquoise");
-//wall_w([5,0,0], features=["window1"], wall_color="MediumTurquoise");
-//wall_e([5,0,0], features=["window1"], wall_color="MediumTurquoise");
-//
-//wall_s([5,0,1], features=["window1"], wall_color="MediumTurquoise");
-//wall_n([5,0,1], features=["window1"], wall_color="MediumTurquoise");
-//wall_w([5,0,1], features=["window1"], wall_color="MediumTurquoise");
-//wall_e([5,0,1], features=["window1"], wall_color="MediumTurquoise");
-//
-//wall_s([5,0,1], features=["window1"], wall_color="MediumTurquoise");
-//wall_n([5,0,1], features=["window1"], wall_color="MediumTurquoise");
-//wall_w([5,0,1], features=["window1"], wall_color="MediumTurquoise");
-//wall_e([5,0,1], features=["window1"], wall_color="MediumTurquoise");
-//
-//wall_s([5,0,2], features=["window1"], wall_color="MediumTurquoise");
-//wall_n([5,0,2], features=["window1"], wall_color="MediumTurquoise");
-//wall_w([5,0,2], features=["window1"], wall_color="MediumTurquoise");
-//wall_e([5,0,2], features=["window1"], wall_color="MediumTurquoise");
-//
-//wall_s([5,0,3], features=["window1"], wall_color="MediumTurquoise");
-//wall_n([5,0,3], features=["window1"], wall_color="MediumTurquoise");
-//wall_w([5,0,3], features=["window1"], wall_color="MediumTurquoise");
-//wall_e([5,0,3], features=["window1"], wall_color="MediumTurquoise");
-//
-//tower_roof1([5,0,4]);
+wall_s([5,0,0], features=["door1"], wall_color="MediumTurquoise");
+wall_n([5,0,0], features=["window1"], wall_color="MediumTurquoise");
+wall_w([5,0,0], features=["window1"], wall_color="MediumTurquoise");
+wall_e([5,0,0], features=["window1"], wall_color="MediumTurquoise");
+
+wall_s([5,0,1], features=["window1"], wall_color="MediumTurquoise");
+wall_n([5,0,1], features=["window1"], wall_color="MediumTurquoise");
+wall_w([5,0,1], features=["window1"], wall_color="MediumTurquoise");
+wall_e([5,0,1], features=["window1"], wall_color="MediumTurquoise");
+
+wall_s([5,0,1], features=["window1"], wall_color="MediumTurquoise");
+wall_n([5,0,1], features=["window1"], wall_color="MediumTurquoise");
+wall_w([5,0,1], features=["window1"], wall_color="MediumTurquoise");
+wall_e([5,0,1], features=["window1"], wall_color="MediumTurquoise");
+
+wall_s([5,0,2], features=["window1"], wall_color="MediumTurquoise");
+wall_n([5,0,2], features=["window1"], wall_color="MediumTurquoise");
+wall_w([5,0,2], features=["window1"], wall_color="MediumTurquoise");
+wall_e([5,0,2], features=["window1"], wall_color="MediumTurquoise");
+
+wall_s([5,0,3], features=["window1"], wall_color="MediumTurquoise");
+wall_n([5,0,3], features=["window1"], wall_color="MediumTurquoise");
+wall_w([5,0,3], features=["window1"], wall_color="MediumTurquoise");
+wall_e([5,0,3], features=["window1"], wall_color="MediumTurquoise");
+
+tower_roof1([5,0,4]);

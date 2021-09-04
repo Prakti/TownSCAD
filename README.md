@@ -1,5 +1,7 @@
 # TownSCAD
 
+![Sceenshot](/townSCAD.png)
+
 This is an OpenSCAD Library for building towns. It is heavily inspired by
 Townscaper, but you have to do program everything. And it is more like a
 puzzle, since there's no automagic that configures elements correctly.
@@ -13,6 +15,8 @@ Goal is that the resulting scenes are 3D printable with FDM printers
 
 ## What is on the roadmap?
 * Documentation
+* Separating code into different modules
+* Explicit examples
 * More Spires (pretty easy roofs)
 * More Roof-Types (incl. adapters)
 * More Windows and Doors
